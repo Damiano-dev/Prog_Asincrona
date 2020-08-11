@@ -17,8 +17,6 @@ namespace Programmazione_asincrona
         {
             int n = 0;
             Object obj = new Object();//l'oggetto deve essere privato altrimente si può usare da altre classi per bloccare altri thread
-            bool MAquired;
-            Mutex mutex = new Mutex(false, "myMutex", out MAquired);
 
             //thread1 = new Thread(ThreadProc);
             //thread1.Name = "Thread1";
