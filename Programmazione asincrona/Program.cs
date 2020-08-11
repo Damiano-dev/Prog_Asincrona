@@ -16,8 +16,10 @@ namespace Programmazione_asincrona
         public static void Main()
         {
             int n = 0;
-            Object obj = new Object(); //l'oggetto deve essere privato altrimente si può usare da altre classi per bloccare altri thread
-            
+            Object obj = new Object();//l'oggetto deve essere privato altrimente si può usare da altre classi per bloccare altri thread
+            bool MAquired;
+            Mutex mutex = new Mutex(false, "myMutex", out MAquired);
+
             //thread1 = new Thread(ThreadProc);
             //thread1.Name = "Thread1";
             //thread1.Start();
@@ -32,16 +34,17 @@ namespace Programmazione_asincrona
                
                 Thread th = new Thread(() =>
                 {
-                    //lock (obj)
-                    //{
-                        Interlocked.Increment(ref n);
-                    //n = n + 1;
-                    Thread.Sleep(2000);
-                    Thread.CurrentThread.Name = "Thread" + i;
-                        Console.WriteLine("n={0}, thread={1}",  n, Thread.CurrentThread.Name);
-                    
-                    //}
+                    #region istruzione Lock
+                    ////lock (obj)
+                    ////{
+                    //    Interlocked.Increment(ref n);
+                    ////n = n + 1;
+                    //Thread.Sleep(2000);
+                    //Thread.CurrentThread.Name = "Thread" + i;
+                    //    Console.WriteLine("n={0}, thread={1}",  n, Thread.CurrentThread.Name);
 
+                    ////}
+                    #endregion
 
                 });
 
